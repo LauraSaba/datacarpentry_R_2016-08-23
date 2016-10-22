@@ -303,7 +303,7 @@ Use `str()` to look at the structure of the data.
 str(surveys)
 ```
 
-This shows that there are `r nrow(surveys)` rows and `r ncol(surveys)`
+This shows that there are `r nrow(surveys)` rows and `r ncol(surveys)` 
 columns, and then for each column, it gives information about the data
 type and shows the first few values.
 
