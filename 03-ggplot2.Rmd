@@ -8,9 +8,6 @@ minutes: 60
 knitr::opts_chunk$set(fig.keep='last')
 ```
 
-```{r setup, echo=FALSE, purl=FALSE}
-source("setup.R")
-```
 
 > ### Learning Objectives
 >
@@ -36,7 +33,7 @@ reduced <- surveys_complete %>%
     filter(species_id %in% frequent_species$species_id)
 ```
 
-I've placed these reduced data on the web, so you can download them
+Karl Broman has placed these reduced data on the web, so you can download them
 directly.
 
 ```{r load_clean_data, eval=FALSE}
@@ -47,8 +44,8 @@ Or download the file and then load it
 
 ```{r download_then_load, eval=FALSE}
 download.file("http://kbroman.org/datacarp/portal_data_reduced.csv",
-              "CleanData/portal_data_reduced.csv")
-reduced <- read.csv("CleanData/portal_data_reduced.csv")
+              "data/portal_data_reduced.csv")
+reduced <- read.csv("data/portal_data_reduced.csv")
 ```
 
 
