@@ -115,15 +115,15 @@ preserves custom settings and open files to make it easier to resume work after
 a break. Below, we will go through the steps for creating an RProject for this
 tutorial.
 
-We assume you've already got a `DataCarpentry` folder that you're
+We assume you've already got a `SoftwareCarpentry` folder that you're
 going to use.
 
 * Start RStudio (presentation of RStudio -below- should happen here)
 * Under the `File` menu, click on `New project`, choose `Existing directory`, then
-  click the "`Browse`" button and find your `DataCarpentry` folder.
+  click the "`Browse`" button and find your `SoftwareCarpentry` folder.
 * Click on "Create project"
 * Create a new R script (File > New File > R script) and save it in
-  your `Code` subfolder (e.g. `~/DataCarpentry/Code`)
+  your `Code` subfolder (e.g. `~/SoftwareCarpentry/Code`)
 
 
 
@@ -325,8 +325,8 @@ Another useful function in `summary()`.
 summary(surveys)
 ```
 
-For the numeric data, you get six statistics (min, 25th percentile,
-median, mean, 75th percentile, and max). For the factors, you get a
+For the numeric data, you get six statistics (min, 1st quartile (25th percentile),
+median, mean, 3rd quartile (75th percentile), and max). For the factors, you get a
 table with counts for the most-frequent "levels", and then for the rest.
 
 
@@ -367,18 +367,18 @@ objects besides `data.frame`.
 It probably is best to first download the file, so that we have a
 local copy, and then read it in.
 
-We could first use `download_file()` to download the data into the `CleanData/` subdirectory:
+We could first use `download_file()` to download the data into the `data/` subdirectory:
 
 ```{r download_file, eval=FALSE, purl=TRUE}
 download.file("http://kbroman.org/datacarp/portal_data_joined.csv",
-              "CleanData/portal_data_joined.csv")
+              "data/portal_data_joined.csv")
 ```
 
 We could then use `read.csv()` to load the data into R, from the
 downloaded file:
 
 ```{r read_csv_local_file, eval=FALSE}
-surveys <- read.csv('CleanData/portal_data_joined.csv')
+surveys <- read.csv('data/portal_data_joined.csv')
 ```
 
 
@@ -532,7 +532,7 @@ problems if `"NA"` is a valid value for your data (e.g., as an
 abbreviation `"North America"`).
 
 ```{r read.csv_blanks_missing, eval=FALSE}
-surveys_noblanks <- read.csv("CleanData/portal_data_joined.csv", na.strings="")
+surveys_noblanks <- read.csv("data/portal_data_joined.csv", na.strings="")
 ```
 
 
@@ -631,7 +631,7 @@ get turned into factors.
 You can avoid this with the argument `stringsAsFactors=FALSE`.
 
 ```{r read_csv_stringsAsFactors, eval=FALSE}
-surveys_chr <- read.csv("CleanData/portal_data_joined.csv", stringsAsFactors=FALSE)
+surveys_chr <- read.csv("data/portal_data_joined.csv", stringsAsFactors=FALSE)
 ```
 
 Then when you look at the result of `str()`, you'll see that the

@@ -122,6 +122,7 @@ button.code-folding-btn:focus {
 </style>
 
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
@@ -241,12 +242,12 @@ $(document).ready(function () {
 <h2>Creating an R Project</h2>
 <p>It is good practice to keep a set of related data, analyses, and text self-contained in a single folder, called the <strong>working directory</strong>. All of the scripts within this folder can then use <em>relative paths</em> to files that indicate where inside the project a file is located (as opposed to absolute paths, which point to where a file is on a specific computer). Working this way makes it a lot easier to move your project around on your computer and share it with others without worrying about whether or not the underlying scripts will still work.</p>
 <p>RStudio provides a helpful set of tools to do this through its “Projects” interface, which can create a working directory for you (or use an existing one) and also remembers its location (allowing you to quickly navigate to it) and optionally preserves custom settings and open files to make it easier to resume work after a break. Below, we will go through the steps for creating an RProject for this tutorial.</p>
-<p>We assume you’ve already got a <code>DataCarpentry</code> folder that you’re going to use.</p>
+<p>We assume you’ve already got a <code>SoftwareCarpentry</code> folder that you’re going to use.</p>
 <ul>
 <li>Start RStudio (presentation of RStudio -below- should happen here)</li>
-<li>Under the <code>File</code> menu, click on <code>New project</code>, choose <code>Existing directory</code>, then click the “<code>Browse</code>” button and find your <code>DataCarpentry</code> folder.</li>
+<li>Under the <code>File</code> menu, click on <code>New project</code>, choose <code>Existing directory</code>, then click the “<code>Browse</code>” button and find your <code>SoftwareCarpentry</code> folder.</li>
 <li>Click on “Create project”</li>
-<li>Create a new R script (File &gt; New File &gt; R script) and save it in your <code>Code</code> subfolder (e.g. <code>~/DataCarpentry/Code</code>)</li>
+<li>Create a new R script (File &gt; New File &gt; R script) and save it in your <code>Code</code> subfolder (e.g. <code>~/SoftwareCarpentry/Code</code>)</li>
 </ul>
 </div>
 <div id="interacting-with-r" class="section level2">
@@ -356,7 +357,7 @@ $(document).ready(function () {
 <p>They cannot start with a number (<code>2x</code> is not valid, but <code>x2</code> is).</p>
 <p>R is case sensitive (e.g., <code>weight_kg</code> is different from <code>Weight_kg</code>). There are some names that cannot be used because they are the names of fundamental functions in R (e.g., <code>if</code>, <code>else</code>, <code>for</code>, see <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">here</a> for a complete list).</p>
 <p>In general, even if it’s allowed, it’s best to not use other function names (e.g., <code>c</code>, <code>T</code>, <code>mean</code>, <code>data</code>, <code>df</code>, <code>weights</code>). If in doubt, type the name to see if it’s already in use.</p>
-<p>It’s also best to avoid dots (<code>.</code>) within a variable name as in <code>my.dataset</code>. There are many functions in R with dots in their names for historical reasons, but because dots have a special meaning in R (for methods) and other programming languages, it’s best to avoid them. It is also recommended to use nouns for variable names, and verbs for function names. It’s important to be consistent in the styling of your code (where you put spaces, how you name variable, etc.). In R, two popular style guides are <a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham’s</a> and <a href="https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml">Google’s</a>.</p>
+<p>It’s also best to avoid dots (<code>.</code>) within a variable name as in <code>my.dataset</code>. There are many functions in R with dots in their names for historical reasons, but because dots have a special meaning in R (for methods) and other programming languages, it’s best to avoid them. It is also recommended to use nouns for variable names, and verbs for function names. It’s important to be consistent in the styling of your code (where you put spaces, how you name variable, etc.). In R, two popular style guides are <a href="http://adv-r.had.co.nz/Style.html">Hadley Wickham’s</a> and <a href="https://google.github.io/styleguide/Rguide.xml">Google’s</a>.</p>
 </div>
 <div id="getting-help" class="section level3">
 <h3>Getting help</h3>
@@ -371,7 +372,7 @@ $(document).ready(function () {
 <p>The data are stored in what’s called a “data frame”. It’s a big rectangle, with rows being observations and columns being variables. The different columns can be different types (numeric, character, etc.), but they’re all the same length.</p>
 <p>Use <code>head()</code> to view the first few rows.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(surveys)</code></pre></div>
-<p>Use <code>tail()</code> to view the first few rows.</p>
+<p>Use <code>tail()</code> to view the last few rows.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(surveys)</code></pre></div>
 <p>Use <code>str()</code> to look at the structure of the data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(surveys)</code></pre></div>
@@ -386,7 +387,7 @@ $(document).ready(function () {
 <h3>Another summary</h3>
 <p>Another useful function in <code>summary()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(surveys)</code></pre></div>
-<p>For the numeric data, you get six statistics (min, 25th percentile, median, mean, 75th percentile, and max). For the factors, you get a table with counts for the most-frequent “levels”, and then for the rest.</p>
+<p>For the numeric data, you get six statistics (min, 1st quartile (25th percentile), median, mean, 3rd quartile (75th percentile), and max). For the factors, you get a table with counts for the most-frequent “levels”, and then for the rest.</p>
 </div>
 </div>
 <div id="inspecting-data-frames" class="section level2">
@@ -420,11 +421,11 @@ $(document).ready(function () {
 <div id="maybe-download-the-file-first" class="section level2">
 <h2>Maybe download the file first</h2>
 <p>It probably is best to first download the file, so that we have a local copy, and then read it in.</p>
-<p>We could first use <code>download_file()</code> to download the data into the <code>CleanData/</code> subdirectory:</p>
+<p>We could first use <code>download_file()</code> to download the data into the <code>data/</code> subdirectory:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;http://kbroman.org/datacarp/portal_data_joined.csv&quot;</span>,
-              <span class="st">&quot;CleanData/portal_data_joined.csv&quot;</span>)</code></pre></div>
+              <span class="st">&quot;data/portal_data_joined.csv&quot;</span>)</code></pre></div>
 <p>We could then use <code>read.csv()</code> to load the data into R, from the downloaded file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;CleanData/portal_data_joined.csv&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/portal_data_joined.csv&#39;</span>)</code></pre></div>
 </div>
 <div id="indexing-sequences-and-subsetting" class="section level2">
 <h2>Indexing, Sequences, and Subsetting</h2>
@@ -489,7 +490,7 @@ heights[!<span class="kw">is.na</span>(heights)]
 <div id="treating-blanks-as-missing" class="section level3">
 <h3>Treating blanks as missing</h3>
 <p>Another aside: it’s probably best to treat those blanks as missing (<code>NA</code>). To do that, use the argument <code>na.strings</code> when reading the data. <code>na.strings</code> can be a vector of multiple character strings. We need that a missing value code can never exist as a valid value, because they all will be converted to the missing data code <code>NA</code>. And note that the default for <code>na.strings</code> is <code>&quot;NA&quot;</code>, which will cause problems if <code>&quot;NA&quot;</code> is a valid value for your data (e.g., as an abbreviation <code>&quot;North America&quot;</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys_noblanks &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CleanData/portal_data_joined.csv&quot;</span>, <span class="dt">na.strings=</span><span class="st">&quot;&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys_noblanks &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/portal_data_joined.csv&quot;</span>, <span class="dt">na.strings=</span><span class="st">&quot;&quot;</span>)</code></pre></div>
 </div>
 </div>
 <div id="factors" class="section level2">
@@ -544,7 +545,7 @@ table(expt)
 <h3>stringsAsFactors</h3>
 <p>The default when reading in data with <code>read.csv()</code>, columns with text get turned into factors.</p>
 <p>You can avoid this with the argument <code>stringsAsFactors=FALSE</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys_chr &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CleanData/portal_data_joined.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys_chr &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/portal_data_joined.csv&quot;</span>, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</code></pre></div>
 <p>Then when you look at the result of <code>str()</code>, you’ll see that the previously factor columns are now <code>chr</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(surveys_chr)</code></pre></div>
 </div>
@@ -561,6 +562,7 @@ table(expt)
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
+
 
 </script>
 

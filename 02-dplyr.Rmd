@@ -5,8 +5,8 @@ author: Data Carpentry contributors
 ---
 
 ```{r, echo=FALSE, message = FALSE}
-source("setup.R")
-surveys <- read.csv("data/portal_data_joined.csv")
+surveys <- read.csv("http://kbroman.org/datacarp/portal_data_joined.csv")
+#surveys <- read.csv("data/portal_data_joined.csv")
 ```
 
 ------------
@@ -95,7 +95,7 @@ Another cumbersome bit of typing. In RStudio, type <kbd>`Ctrl`</kbd> +
 <kbd>`Shift`</kbd> + <kbd>`M`</kbd> and the `%>%` operator will be inserted.
 
 In the above we use the pipe to send the `surveys` data set first through
-`filter`, to keep rows where `wgt` was less than 5, and then through `select` to
+`filter`, to keep rows where `weight` was less than 5, and then through `select` to
 keep the `species` and `sex` columns. When the data frame is being passed to the
 `filter()` and `select()` functions through a pipe, we don't need to include it
 as an argument to these functions anymore.
@@ -306,7 +306,7 @@ reduced <- surveys_complete %>%
 We might save this to a file:
 
 ```{r save_reduced_data_to_file, eval=FALSE}
-write.csv(reduced, "CleanData/portal_data_reduced.csv")
+write.csv(reduced, "data/portal_data_reduced.csv")
 ```
 
 
